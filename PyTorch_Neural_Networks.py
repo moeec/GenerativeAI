@@ -1,23 +1,33 @@
+import torch
 import torch.nn as nn
 
-class MLP(nn.Module):
-    def __init__(self, input_size):
-        super(MLP, self).__init__()
-        self.hidden_layer = nn.Linear(input_size, 64)
-        self.output_layer = nn.Linear(64, 2)
-        self.activation = nn.ReLU()
+loss_function = nn.CrossEntropyLoss()
 
-    def forward(self, x):
-        x = self.activation(self.hidden_layer(x))
-        return self.output_layer(x)
+# Our dataset contains a single image of a dog, where
+# cat = 0 and dog = 1 (corresponding to index 0 and 1)
+target_tensor = torch.tensor([1])
+target_tensor
+# tensor([1])
 
-model = MLP(input_size=10)
-print(model)
-# MLP(
-#   (hidden_layer): Linear(in_features=10, out_features=64, bias=True)
-#   (output_layer): Linear(in_features=64, out_features=2, bias=True)
-#   (activation): ReLU()
-# )
+# Note that the values do not need to sum to 1
+predicted_tensor = torch.tensor([[2.0, 5.0]])
+loss_value = loss_function(predicted_tensor, target_tensor)
+loss_value
+# tensor(0.0181)
 
-model.forward(torch.rand(10))
-# tensor([0.2294, 0.2650], grad_fn=<AddBackward0>)
+predicted_tensor = torch.tensor([[1.5, 1.1]])
+loss_value = loss_function(predicted_tensor, target_tensor)
+loss_value
+# tensor(0.9130)
+
+# Define the loss function
+loss_function = nn.MSELoss()
+
+# Define the predicted and actual values as tensors
+predicted_tensor = torch.tensor([320000.0])
+actual_tensor = torch.tensor([300000.0])
+
+# Compute the MSE loss
+loss_value = loss_function(predicted_tensor, actual_tensor)
+print(loss_value.item()) # Loss value: 20000 * 20000 / 1 = ...
+# 400000000.0
