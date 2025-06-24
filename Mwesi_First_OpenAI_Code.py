@@ -29,7 +29,9 @@ client = OpenAI(
 # 3. Call the chat endpoint
 response = client.chat.completions.create(
     model="gpt-4.1",
-    messages=[{"role": "user", "content": "Write a one-sentence story about Mwesi's Superpowers."}]
+    messages=[{"role": "user", "content": "Write a one-sentence story about Mwesi's Superpowers."}],
+    temperature=0.7,   # Controls randomness (0.0 = deterministic, 1.0 = creative)
+    top_p=0.9          # Controls nucleus sampling (lower = more focused, 1.0 = everything)
 )
 
 # 4. Print the assistant’s reply
