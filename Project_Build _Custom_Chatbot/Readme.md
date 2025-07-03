@@ -26,9 +26,5 @@ A: Components such as filters, envelopes
 What music genres have been influenced by the Synthesizer?
 A:Electronic, hip hop, disco,
 
-Check it out here 👇
-
-https://lnkd.in/eQTtxuBV
-
 I now understand how to structure and format external data so it can be used effectively in a custom chatbot powered by OpenAI. This opens up exciting possibilities for building domain-specific assistants for everything from customer support to educational tools.
 
